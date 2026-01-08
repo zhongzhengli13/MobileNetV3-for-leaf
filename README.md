@@ -84,4 +84,4 @@ transforms.Normalize([0.4717, 0.5892, 0.3972],
 ## 📌 项目作者
 
 **李中政**
- GitHub: [@lizhongzheng13](https://github.com/lizhongzheng13)
+ GitHub: [zhongzhengli](https://github.com/zhongzhengli13)
