@@ -5,7 +5,7 @@ import torch.optim as optim
 from torch.utils.data import DataLoader
 from torchvision import datasets, transforms
 
-from model import PlantDiseaseClassifier
+from model import FlowerClassifier
 
 
 def main():
@@ -72,7 +72,7 @@ def main():
         val_dataset, batch_size=batch_size, shuffle=False, num_workers=4)
 
     # ----------------------- 初始化模型 -----------------------
-    model = PlantDiseaseClassifier(num_classes=num_classes).to(device)
+    model = FlowerClassifier(num_classes=num_classes).to(device)
     print(f"✅ 模型已初始化，参数数量: {sum(p.numel() for p in model.parameters())}")
 
     # ----------------------- 损失函数与优化器 -----------------------
