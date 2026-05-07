@@ -1,7 +1,7 @@
 
-# 🌸 Flower Classification using MobileNetV3 (PyTorch) - 花卉分类
+# 🌸 Flower Classification using MobileNetV3 (PyTorch)
 
-> **项目说明：** 
+> **项目说明：**
 > 本项目基于 MobileNetV3 轻量级模型，用于 **17 种花卉分类**任务。
 
 使用轻量级模型 **MobileNetV3-Small** 实现 **17 种花卉分类**，数据集来自 Kaggle：[17-Category Flowers Dataset](https://www.kaggle.com/datasets/saidakbarp/17-category-flowers)
@@ -113,11 +113,8 @@ flowers-dataset/
 
 ## 🔧 模型架构
 
-### PlantDiseaseClassifier（原始模型 - 叶片病害识别）
-- 类别数：3
-- 预训练：否
-
-### FlowerClassifier（新增模型 - 花卉分类）
+### FlowerClassifier
+- 基础模型：MobileNetV3-Small
 - 类别数：17
 - 预训练：是（使用 ImageNet 预训练权重）
 - 参数量：约 1.5M
@@ -171,29 +168,11 @@ transforms.Compose([
 
 ```
 MobileNetV3-for-leaf/
-├── main (分支)              # 原始叶片病害识别
-│   ├── train.py            # 原始训练脚本
-│   ├── model.py            # 原始模型定义
-│   └── test_single_image.py # 单张图像测试
-│
-└── test (分支)             # 花卉分类开发分支 ⭐
-    ├── train_flowers.py     # 花卉训练脚本 ✨
-    ├── model.py             # 更新后的模型定义 ✨
-    ├── test_flower_single_image.py  # 花卉测试脚本 ✨
-    └── README_FLOWERS.md    # 本文档 ✨
+├── model.py                    # 模型定义（FlowerClassifier）
+├── train_flowers.py            # 花卉分类训练脚本
+├── test_flower_single_image.py # 单张图像测试脚本
+└── README.md                   # 项目文档
 ```
-
-------
-
-## 🎯 模型对比
-
-| 特性 | 叶片病害识别 | 花卉分类 |
-|------|-----------|--------|
-| 分支 | `main` | `test` |
-| 类别数 | 3 | 17 |
-| 预训练 | 否 | 是 ✓ |
-| 数据增强 | 基础 | 增强 ✓ |
-| 学习率调度 | 无 | 余弦退火 ✓ |
 
 ------
 
@@ -208,9 +187,5 @@ MobileNetV3-for-leaf/
 
 ## 📌 项目作者
 
-**李中政**  
+**李中政**
 GitHub: [zhongzhengli](https://github.com/zhongzhengli13)
-
----
-
-**说明**：本项目在 `test` 分支中开发，不影响 `main` 分支的原始代码。

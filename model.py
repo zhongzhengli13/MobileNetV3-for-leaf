@@ -4,17 +4,6 @@ from torchvision.models import mobilenet_v3_small
 from torchsummary import summary
 
 
-class PlantDiseaseClassifier(nn.Module):
-    def __init__(self, num_classes=3):
-        super(PlantDiseaseClassifier, self).__init__()
-        self.base_model = mobilenet_v3_small(pretrained=False)
-        in_features = self.base_model.classifier[3].in_features
-        self.base_model.classifier[3] = nn.Linear(in_features, num_classes)
-
-    def forward(self, x):
-        return self.base_model(x)
-
-
 class FlowerClassifier(nn.Module):
     def __init__(self, num_classes=17):
         super(FlowerClassifier, self).__init__()
@@ -28,14 +17,9 @@ class FlowerClassifier(nn.Module):
 
 if __name__ == "__main__":
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    
-    # 测试原始模型
-    model_leaf = PlantDiseaseClassifier(num_classes=3).to(device)
-    dummy_input = torch.randn(4, 3, 224, 224).to(device)
-    output_leaf = model_leaf(dummy_input)
-    print("✅ 叶片分类模型输出形状：", output_leaf.shape)  # 应该是 [4, 3]
-    
+
     # 测试花卉分类模型
     model_flower = FlowerClassifier(num_classes=17).to(device)
+    dummy_input = torch.randn(4, 3, 224, 224).to(device)
     output_flower = model_flower(dummy_input)
     print("✅ 花卉分类模型输出形状：", output_flower.shape)  # 应该是 [4, 17]
