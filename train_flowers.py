@@ -10,9 +10,9 @@ from model import FlowerClassifier
 
 def main():
     # ----------------------- 配置参数 -----------------------
-    data_dir = './flowers-dataset'  # 改为你的花卉数据集根目录
+    data_dir = './data/dataset'  # 花卉数据集根目录
     batch_size = 32
-    num_classes = 17  # 17种花卉
+    num_classes = 102  # 102种花卉
     learning_rate = 0.001
     num_epochs = 30  # 可增加更多epoch
     input_size = 224
@@ -47,7 +47,7 @@ def main():
 
     # ----------------------- 加载数据集 -----------------------
     train_dir = os.path.join(data_dir, "train")
-    val_dir = os.path.join(data_dir, "val")
+    val_dir = os.path.join(data_dir, "valid")
 
     # 检查数据集是否存在
     if not os.path.exists(train_dir):
