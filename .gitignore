@@ -1,0 +1,15 @@
+# 数据集
+data/dataset/
+archive.zip
+
+# 模型权重
+*.pth
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE
+.vscode/
+.idea/
